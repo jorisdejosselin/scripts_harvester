@@ -1,5 +1,17 @@
+# Kubectl tweaks
+kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl > /dev/null
 echo "alias k=kubectl" >> /etc/bash.bashrc
+echo 'alias x="kubectx"' >> /etc/bash.bashrc
+echo 'alias e="kubens"' >> /etc/bash.bashrc
+echo 'complete -F __start_kubectl k' >> /etc/bash.bashrc
 chown ubuntu: /etc/rancher/k3s/k3s.yaml
+
+# Install kubectx en kubens
+git clone https://github.com/ahmetb/kubectx /opt/kubectx
+install -o root -g root -m 0755 /opt/kubectx/kubectx /usr/local/bin/kubectx
+install -o root -g root -m 0755 /opt/kubectx/kubens /usr/local/bin/kubens
+
+# install helm CLI
 snap install helm --classic
 
 # Set env variables
@@ -14,5 +26,5 @@ helm install cert-manager jetstack/cert-manager --namespace cert-manager --creat
 # install rancher
 helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
 kubectl create namespace cattle-system
-helm install rancher rancher-latest/rancher --namespace cattle-system --set hostname=rancher.my.org --set replicas=2
+helm install rancher rancher-latest/rancher --namespace cattle-system --set hostname=rancher.joict.nl --set replicas=2
 
