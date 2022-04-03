@@ -4,7 +4,7 @@ echo "alias k=kubectl" >> /etc/bash.bashrc
 echo 'alias x="kubectx"' >> /etc/bash.bashrc
 echo 'alias e="kubens"' >> /etc/bash.bashrc
 echo 'complete -F __start_kubectl k' >> /etc/bash.bashrc
-chown ubuntu: /etc/rancher/k3s/k3s.yaml
+chown -R ubuntu: /etc/rancher/k3s/
 
 # Install kubectx en kubens
 git clone https://github.com/ahmetb/kubectx /opt/kubectx
