@@ -27,5 +27,5 @@ helm install cert-manager jetstack/cert-manager --namespace cert-manager --creat
 helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
 kubectl create namespace cattle-system
 
-helm install rancher rancher-latest/rancher --namespace cattle-system --set hostname=rancher.joict.nl --set replicas=2 --set ingress.tls.source=letsEncrypt --set letsEncrypt.email=joor-josselin@hotmail.com --set letsEncrypt.ingress.class=traefik
+helm install rancher rancher-latest/rancher --namespace cattle-system --set hostname=rancher.sub.joict.nl --set replicas=2 --set ingress.tls.source=letsEncrypt --set letsEncrypt.email=joor-josselin@hotmail.com --set letsEncrypt.ingress.class=traefik
 
